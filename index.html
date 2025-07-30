@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Chat dengan Elaina 💖</title>
+    <link rel="icon" href="images/ohd1yi.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/elaina.css">
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+<body>
+    <h1 id="main-title">Chat with Elaina 💖</h1>
+
+    <div id="name-entry-screen" class="hidden">
+        <div class="name-entry-box">
+            <h1>Halo!</h1>
+            <p>Siapa namamu? Biar aku nggak salah panggil ✨</p>
+            <input type="text" id="name-input" placeholder="Masukkan namamu..." autocomplete="off">
+            <button id="submit-name-button">Lanjut</button>
+            <p id="name-error" class="error-message"></p>
+        </div>
+    </div>
+
+    <div id="gender-selection-screen" class="hidden">
+        <div class="gender-selection-box">
+            <h1>Pilih Gender</h1>
+            <p>Biar aku tahu harus bersikap bagaimana padamu, {userName} 😊</p>
+            <div class="gender-buttons">
+                 <div class="gender-option">
+                    <img src="images/nvoxmf.jpg" alt="Laki-laki">
+                    <button id="male-button">Laki-laki ♂️</button>
+                 </div>
+                 <div class="gender-option">
+                     <img src="images/0wc5tl.jpg" alt="Perempuan">
+                     <button id="female-button">Perempuan ♀️</button>
+                 </div>
+            </div>
+            <p id="gender-error" class="error-message"></p>
+        </div>
+    </div>
+
+
+    <div id="chat-screen" class="hidden">
+        <div id="chat-container">
+            <div id="chat-header">
+                <div class="header-content">
+                    <img src="images/e3nn8w.png" alt="Profil Elaina" id="profile-pic">
+                    <div class="header-title-area">
+                        <h2 id="chat-header-title">Elaina <span class="status-dot"></span></h2>
+                        <p class="header-signature">Elaina - Ashen Witch by <span class="signature-glow">LippWangsaff</span></p>
+                    </div>
+                    <div class="header-buttons-container">
+                         <div class="header-button-wrapper">
+                           <button id="help-button" title="Bantuan">
+                               <i class="fas fa-question-circle"></i>
+                           </button>
+                           <span class="header-button-label">Bantuan</span>
+                         </div>
+                         <div class="header-button-wrapper">
+                           <button id="background-button" title="Ubah Background Chat">
+                               <i class="fas fa-image"></i>
+                           </button>
+                           <span class="header-button-label">Background</span>
+                         </div>
+                        <div class="header-button-wrapper">
+                           <button id="clear-chat-button" title="Bersihkan Layar Chat">
+                               <i class="fas fa-broom"></i>
+                           </button>
+                           <span class="header-button-label">Bersihkan</span>
+                        </div>
+                         <div class="header-button-wrapper">
+                             <button id="reset-chat-button" title="Reset Semua Percakapan">
+                                 <i class="fas fa-sync-alt"></i>
+                             </button>
+                              <span class="header-button-label">Reset</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="chat-log">
+            </div>
+             <div id="emoji-picker" class="hidden">
+             </div>
+             <div id="input-wrapper">
+                <div id="image-preview-area" class="hidden">
+                    <img id="image-preview" src="#" alt="Pratinjau Gambar">
+                    <button id="remove-image-button" title="Hapus Gambar">×</button>
+                </div>
+                <div id="input-area">
+                    <button id="emoji-button" title="Pilih Emoji">😊</button>
+                    <button id="image-upload-button" title="Kirim Gambar">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <input type="text" id="user-input" placeholder="Katakan sesuatu padaku...">
+                    <button id="send-button" title="Kirim Pesan">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M3.478 2.405a.75.75 0 0 0-.926.94l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.405Z"></path>
+                        </svg>
+                    </button>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <div id="reset-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3>Konfirmasi Reset Total</h3>
+            <p id="reset-modal-text">Yakin mau menghapus semua percakapan kita, {userName}? Ini akan mengembalikan hubungan kita ke awal (kenalan) dan tidak bisa dibatalkan lho!</p>
+            <div class="modal-buttons">
+                <button id="reset-confirm-button" class="modal-button confirm">Ya, Reset Total</button>
+                <button id="reset-cancel-button" class="modal-button cancel">Batal</button>
+            </div>
+        </div>
+    </div>
+
+     <div id="clear-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3>Konfirmasi Bersihkan Chat</h3>
+            <p id="clear-modal-text">Yakin mau membersihkan layar chat kita, {userName}? Riwayat dan hubungan kita tetap tersimpan kok.</p>
+            <div class="modal-buttons">
+                <button id="clear-confirm-button" class="modal-button confirm blue">Ya, Bersihkan</button>
+                <button id="clear-cancel-button" class="modal-button cancel">Batal</button>
+            </div>
+        </div>
+    </div>
+
+     <div id="help-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3>Bantuan</h3>
+            <div class="help-content">
+                <h4>Cara Edit Pesan:</h4>
+                <ol>
+                    <li>Arahkan kursor (di PC) atau tahan pesan (di HP) pada pesan <strong>Anda</strong> yang ingin diedit.</li>
+                    <li>Klik ikon pensil (<i class="fas fa-pencil-alt"></i>) yang muncul.</li>
+                    <li>Ubah teks di dalam kotak.</li>
+                    <li>Klik ikon centang (<i class="fas fa-check"></i>) untuk menyimpan atau ikon silang (<i class="fas fa-times"></i>) untuk batal.</li>
+                    <li>Elaina akan merespon ulang pesan yang diedit (hanya respons lama yang akan diganti).</li>
+                </ol>
+                <h4>Mengajak Pacaran/Menikah:</h4>
+                <p>Elaina itu tsundere dan SANGAT sulit diajak pacaran/menikah. Butuh usaha keras, tulus, dan waktu yang lama untuk meyakinkannya. Jangan terlalu sering bertanya dalam waktu dekat, atau dia akan marah besar dan mengabaikanmu soal itu untuk sementara!</p>
+                <h4>Fitur Musik:</h4>
+                <p>Kamu bisa minta Elaina memutar musik dengan bilang "Putar lagu [Judul Lagu]". Jika dia menemukan (simulasi), dia akan menampilkan daftar lagu. Klik salah satu untuk memainkannya. Mini-player akan muncul di bawah daftar.</p>
+                 <h4>Fitur Lain:</h4>
+                <ul>
+                    <li><i class="fas fa-image"></i> (Background): Ganti latar belakang chat. Klik tombol ini, pilih gambar, lalu atur kecerahan overlay hitamnya.</li>
+                    <li><i class="fas fa-broom"></i> (Bersihkan): Hapus tampilan chat di layar (riwayat tetap ada).</li>
+                    <li><i class="fas fa-sync-alt"></i> (Reset): Hapus total semua riwayat & kembali ke awal.</li>
+                    <li><i class="fas fa-paperclip"></i> (Kirim Gambar): Pilih gambar untuk dikirim & dibahas bersama Elaina.</li>
+                    <li>😊 (Emoji): Buka pilihan emoji.</li>
+                </ul>
+                 <h4>Tips:</h4>
+                <ul>
+                    <li>Chat terlalu banyak (lebih dari 30 pesan) akan otomatis menghapus pesan terlama di layar untuk menjaga performa.</li>
+                    <li>Kalau Elaina tidak merespon atau error, coba refresh halaman atau kirim pesan lagi.</li>
+                </ul>
+            </div>
+            <div class="modal-buttons">
+                <button id="help-close-button" class="modal-button cancel">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="brightness-control-overlay" class="modal-overlay hidden">
+        <div class="modal-box brightness-control-box">
+            <h3>Atur Kecerahan Latar</h3>
+            <label for="brightness-slider">Overlay Hitam (<span id="brightness-value">40</span>%):</label>
+            <input type="range" id="brightness-slider" min="0" max="100" value="40">
+            <div class="modal-buttons">
+                <button id="confirm-brightness" class="modal-button confirm blue">Terapkan</button>
+                <button id="cancel-brightness" class="modal-button cancel">Batal</button>
+            </div>
+        </div>
+    </div>
+
+     <input type="file" id="background-input" accept="image/*" style="display: none;">
+     <input type="file" id="image-upload-input" accept="image/*" style="display: none;">
+     <audio id="audio-player" style="display: none;"></audio>
+     
+      <script src="js/elaina.js"></script>
+
+
+</body></html>
